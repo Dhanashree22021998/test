@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Show</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container" style="display:flex;column-gap:4px;row-gap;4px;flex-wrap:wrap;">
+
+    {% for i in blog %}
+
+        <div class="card" style="width: 18rem;">
+
+            {% if i.pic %}
+                <img src="{{i.pic.url}}" class="card-img-top" alt="..." style="height:160px;object-fit:cover;">
+
+            {% else %}
+                <img src="{% static 'blog/img/butterfly.jpeg' %}" class="card-img-top" alt="..." style="height:160px;object-fit:cover;">
+            {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{i.title}}</h5>
+    <p class="card-text">{{i.body | slice:"60"}}..</p>
+    <a href="#" class="btn btn-sm btn-primary">Read more</a>
+  </div>
+</div>
+    {% endfor %}
+</div>
+{% endblock %}
+
